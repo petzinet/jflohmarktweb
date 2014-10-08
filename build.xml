@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jflohmarktweb" default="dist">
+
+    <property name="version" value="snapshot"/>
+	
+	<target name="dist" depends="clean">
+        <zip destfile="${basedir}/jflohmarktweb-${version}.zip">
+        	<zipfileset dir="${basedir}" prefix="jflohmarktweb">
+        		<exclude name=".settings/**/*"/>
+        		<exclude name=".settings/"/>
+        		<exclude name="nbproject/**/*"/>
+        		<exclude name="nbproject"/>
+        		<exclude name="user_guide/**/*"/>
+        		<exclude name="user_guide"/>
+        		<exclude name=".buildpath"/>
+        		<exclude name=".project"/>
+        		<exclude name="build.xml"/>
+        		<exclude name="jflohmarktweb.zip"/>
+        	</zipfileset>
+        </zip>
+    </target>
+	
+	<target name="clean">
+		<delete dir="${basedir}">
+			<include name="jflohmarktweb-*.zip"/>
+		</delete>
+	</target>
+
+</project>

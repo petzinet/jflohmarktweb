@@ -1,0 +1,4 @@
+- fixed error message for antispam
+- fixed sql entry without form submit
+- created template for "thank you" mail
+- allowing double registrations with same mail

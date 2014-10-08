@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteBase /workspaces/jameica/jflohmarktweb/
+RewriteCond $1 !^(index\.php|images|favicon.ico|css|fonts|js|robots\.txt)
+RewriteRule ^(.*)$ index.php?/$1 [L]

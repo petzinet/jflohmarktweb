@@ -1,0 +1,8 @@
+Hallo ${givenName} ${name}!
+
+Vielen Dank für Deine Registrierung zum Flohmarkt des Fördervereins der KitaBü.
+
+Bitte drucke den beiliegenden Vertrag zweimal aus, unterschreibe ihn und gebe ihn zusammen mit der zu verkaufenden Ware ab.
+
+Mit freundlichen Grüßen
+vom Förderverein der KitaBü
