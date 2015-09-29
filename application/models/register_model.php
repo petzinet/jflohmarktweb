@@ -53,24 +53,20 @@ class register_model extends CI_Model {
     }
 
     public function validateregistration($email, $name) {
-//        Removed because we allow multiple registrations with same mail
-//        $query = $this->db->get_where('jflohmarktweb_registrations', array(
-//            'email' => $email
-//                ), 1, 0);
-//        $result = $query->result();
-//        if ($result) {
-        if (! $email) {
-            return false;
+        $query = $this->db->get_where('jflohmarktweb_registrations', array(
+            'email' => $email
+                ), 1, 0);
+        $result = $query->result();
+        if ($result) {
+            $nr = $result[0]->number;
+        }else{
+            $this->db->insert('jflohmarktweb_registrations', array('email' => $email, 'name' => $name));
+            $this->db->where('id', $this->db->insert_id());
+            $nr = $this->db->insert_id() . $this->calc_checksumDigit($this->db->insert_id());
+            $this->db->update('jflohmarktweb_registrations', array(
+                'number' => $nr)
+            );
         }
-
-        $this->db->insert('jflohmarktweb_registrations', array('email' => $email, 'name' => $name));
-        $this->db->where('id', $this->db->insert_id());
-
-        $nr = $this->db->insert_id() . $this->calc_checksumDigit($this->db->insert_id());
-
-        $this->db->update('jflohmarktweb_registrations', array(
-            'number' => $nr)
-        );
         return $nr;
     }
 
@@ -166,6 +162,7 @@ class register_model extends CI_Model {
             if ($nr === FALSE) {
                 return false;
             }
+
             if (empty($iban)
                     OR empty($bic)) {
                 $iban = '-';
