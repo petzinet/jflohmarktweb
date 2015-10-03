@@ -53,6 +53,9 @@ class register_model extends CI_Model {
     }
 
     public function validateregistration($email, $name) {
+        if (! $email) {
+            return false;
+        }
         $query = $this->db->get_where('jflohmarktweb_registrations', array(
             'email' => $email
                 ), 1, 0);
